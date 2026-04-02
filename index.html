@@ -1,9 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Home Page</title>
+
     <style>
         * {
             margin: 0;
@@ -14,9 +16,9 @@
 
         body {
             background: #f4f4f4;
+            transition: background 0.5s ease;
         }
 
-        /* Navbar */
         header {
             background: #333;
             color: #fff;
@@ -26,22 +28,16 @@
             align-items: center;
         }
 
-        header h1 {
-            font-size: 24px;
-        }
-
         nav a {
             color: #fff;
             text-decoration: none;
             margin-left: 20px;
-            font-size: 16px;
         }
 
         nav a:hover {
             color: #00adb5;
         }
 
-        /* Hero Section */
         .hero {
             height: 90vh;
             display: flex;
@@ -53,31 +49,16 @@
             color: white;
         }
 
-        .hero h2 {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
         .hero button {
             padding: 12px 25px;
             border: none;
             background: white;
             color: #00adb5;
-            font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+            margin-top: 10px;
         }
 
-        .hero button:hover {
-            background: #ddd;
-        }
-
-        /* Footer */
         footer {
             background: #333;
             color: white;
@@ -86,31 +67,48 @@
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Navbar -->
-    <header>
-        <h1>MySite</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+<header>
+    <h1>MySite</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Welcome to My Website</h2>
-        
-        <button onclick="alert('Hello!')">Get Started</button>
-    </section>
+<section class="hero">
+    <h2>Welcome to My Website</h2>
 
-    <!-- Footer -->
-    <footer>
-        
-        <p>© 2026 MySite. All rights reserved.</p>
-    </footer>
+    <button onclick="alert('Hello!')">Get Started</button>
+
+    <!-- ✅ Upload Background Image -->
+    <input type="file" accept="pb.png" onchange="setBackground(event)" style="margin-top:15px; color:white;">
+</section>
+
+<footer>
+    <p>© 2026 MySite. All rights reserved.</p>
+</footer>
+
+<script>
+function setBackground(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            document.body.style.background = `url(${e.target.result}) no-repeat center center fixed`;
+            document.body.style.backgroundSize = "cover";
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+</script>
 
 </body>
 </html>
+```
